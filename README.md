@@ -27,10 +27,6 @@ Navigate to the project directory and install the required dependencies using np
 
 Create a `.env` file in the root of the project to store environment variables. Add the necessary variables to this file. At a minimum, you'll need API keys for services used in the app.
 
-Example `.env` file:
-
-envCopy code
-
 `REACT_APP_API_KEY=your_openweathermap_api_key`
 
 `REACT_APP_API_KEYG=your_google_maps_api_key` 
