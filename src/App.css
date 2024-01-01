@@ -1,4 +1,3 @@
-
 body {
   height: 100vh;
   width: 100%;
@@ -41,13 +40,12 @@ body {
   font-weight: bold;
   color: #43aefc;
   padding: 20px 30px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   text-align: left;
   border-bottom: 2px;
   border-bottom: 1px solid #c7c7c7;
 
 }
-
 .search-loc{
   width: 100%;
 }
@@ -55,8 +53,9 @@ body {
   color: #c7c7c7;
   opacity: 1; 
 }
-::-ms-input-placeholder { 
+.search:focus::placeholder{
   color: #c7c7c7;
+  opacity: 1; 
 }
 .search, .search:focus {
   padding: 15px 10px;
@@ -178,4 +177,29 @@ body {
 }
 .loading-screen{
   padding: 80px;
+}
+/* error shake animation */
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-10px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(10px);
+  }
+}
+.shake {
+  animation: shake 0.5s ease-in-out;
+}
+.error{
+  border: 1px solid red;
+}
+.error::placeholder {
+  color: red; 
+}
+.err{
+  font-size: calc(4px + 1vmin);
+  color: red;
 }

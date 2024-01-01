@@ -25,7 +25,7 @@ const Weather = () => {
   const getWeather = async () => {
     try {
       setLoading(true);
-
+      setError('');
       const response = await axios.get(
         `https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=${API_KEYG}`
       );
@@ -41,6 +41,7 @@ const Weather = () => {
         setError('');
       } else {
         setWeatherData(null);
+        setLocation('')
         setError('Location not found. Please check your input.');
       }
     } catch (err) {
@@ -85,10 +86,25 @@ const Weather = () => {
     }
   }, [weatherData]);
 
+  // shake animation
+  useEffect(() => {
+    if (error) {
+      const searchBar = document.getElementById('searchBar');
+      searchBar.classList.add('shake');
+
+      const onAnimationEnd = () => {
+        searchBar.classList.remove('shake');
+        searchBar.removeEventListener('animationend', onAnimationEnd);
+      };
+
+      searchBar.addEventListener('animationend', onAnimationEnd);
+    }
+
+  }, [error]);
+  // loading screen
   const LoadingScreen = () => (
     <div className="loading-screen">
       <p><RingLoader color="#43aefc" size={100}/></p>
-      
     </div>
   );
   return (
@@ -98,9 +114,10 @@ const Weather = () => {
                 <div className='title'>Weather App</div>
                 <div className='search-loc'>
                     <input
+                        id="searchBar"
                         type="text"
                         value={location}
-                        className='search'
+                        className={`search ${error ? 'error' : ''}`} 
                         onChange={(e) => setLocation(e.target.value)}
                         onKeyDown={(e) => {
                           if (e.key === 'Enter') {
@@ -109,14 +126,14 @@ const Weather = () => {
                         }}
                         placeholder="Enter city name"
                     />
-                <div className="or"> or </div>
-                <button className='get-button' onClick={getWeather} disabled={loading}>
-                    Get Weather
-                </button>
+                    {error && <div className='err'>{error}</div>}
+                  <div className="or"> or </div>
+                  <button className='get-button' onClick={getWeather} disabled={loading}>
+                      Get Weather
+                  </button>
                 </div>
             </div>
         }
-      {error && <p>{error}</p>}
       {loading && <LoadingScreen />}
       {weatherData && (
         <div className='data'>
