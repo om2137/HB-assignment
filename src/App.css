@@ -54,8 +54,7 @@ body {
   opacity: 1; 
 }
 .search:focus::placeholder{
-  color: #c7c7c7;
-  opacity: 1; 
+  opacity: 0; 
 }
 .search, .search:focus {
   padding: 15px 10px;
