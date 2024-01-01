@@ -1,3 +1,4 @@
+import './weather.css';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../App.css';
@@ -8,7 +9,6 @@ import { GrLocation } from "react-icons/gr";
 import { IoEarthOutline } from "react-icons/io5";
 import { MdAir } from "react-icons/md";
 import { FaDroplet, FaTemperatureArrowUp, FaTemperatureArrowDown, FaArrowUpFromGroundWater } from "react-icons/fa6";
-
 
 const Weather = () => {
   const [location, setLocation] = useState('');
