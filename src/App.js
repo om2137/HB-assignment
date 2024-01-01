@@ -1,14 +1,12 @@
-import logo from './logo.svg';
 import './App.css';
 import Weather from './components/weather'
-import LocationToLatLng from './components/geocoding';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      <div className="App-box">
         <Weather />
-      </header>
+      </div>
     </div>
   );
 }
