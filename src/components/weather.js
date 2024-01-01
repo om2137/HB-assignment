@@ -129,7 +129,7 @@ const Weather = () => {
                     {error && <div className='err'>{error}</div>}
                   <div className="or"> or </div>
                   <button className='get-button' onClick={getWeather} disabled={loading}>
-                      Get Weather
+                      Get Device Location
                   </button>
                 </div>
             </div>
